@@ -1,0 +1,22 @@
+.animatedBallBubbling{
+    height: var(--size);
+    width: var(--size);
+    border-radius: 50%;
+    position: absolute;
+    left: var(--xAxis);
+    top: var(--yAxis);
+    transform: translate(-50%,-50%);
+    animation: ballBubbling 1s linear;
+}
+@keyframes ballBubbling{
+    from{
+        left: var(--xAxis);
+        top: var(--yAxis);
+        display: block;
+    }
+    to{
+        left: var(--xAxisEnd);
+        top: var(--yAxisEnd);
+        opacity: .0;
+    }
+}

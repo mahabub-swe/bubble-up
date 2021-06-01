@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Ball</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 class='title' style="text-align: center">
+      hold the left button of your mouse and move
+    </h1>
+
+    <script>
+      function bubble() {
+        let animated_ball = document.body.appendChild(
+          document.createElement("div")
+        );
+        animated_ball.setAttribute("class", `animatedBallBubbling`);
+        animated_ball.setAttribute(
+          "style",
+          `--xAxis:${
+            parseInt(Math.random() * 2) == 0
+              ? event.clientX + Math.random() * 15
+              : event.clientX - Math.random() * 10
+          }px;
+                --yAxis:${
+                  parseInt(Math.random() * 2) == 0
+                    ? event.clientY - Math.random() * 10
+                    : event.clientY + Math.random() * 15
+                }px;
+                --size:${10 + Math.random() * 30}px;
+                background-color:rgb(${parseInt(
+                  Math.random() * 284
+                )},${parseInt(Math.random() * 284)},${parseInt(
+            Math.random() * 284
+          )});
+                --xAxisEnd:${
+                  parseInt(Math.random() * 2) == 0
+                    ? event.clientX + Math.random() * 100
+                    : event.clientX - Math.random() * 100
+                }px;
+                --yAxisEnd:${
+                  parseInt(Math.random() * 2) == 0
+                    ? event.clientY - Math.random() * 150
+                    : event.clientY + Math.random() * 150
+                }px;`
+        );
+
+        setTimeout(() => {
+          animated_ball.remove();
+        }, 800);
+      }
+
+      //mouseMoveDown event (mosue move event only happen when the left button is pressed)
+      document.addEventListener("mousedown", () =>
+        document.addEventListener("mousemove", bubble)
+      ); //pressing left button will add a mousemove event
+      document.addEventListener("mouseup", () =>
+        document.removeEventListener("mousemove", bubble)
+      ); //realising left button will remove mousemove event
+    </script>
+  </body>
+</html>
